@@ -248,7 +248,7 @@ const BlogPostTable = () => {
                                                             key={column.id}
                                                             align={column.align}
                                                             style={{
-                                                                maxWidth: column.maxWidth,
+                                                                inlineSize: column.inlineSize,
                                                                 color: "#1976d2",
                                                                 fontWeight: "bold",
                                                             }}
@@ -258,7 +258,7 @@ const BlogPostTable = () => {
                                                                 onChange={handleStatusChange}
                                                                 displayEmpty
                                                                 sx={{
-                                                                    maxWidth: column.maxWidth,
+                                                                    inlineSize: column.inlineSize,
                                                                     color: "#1976d2",
                                                                     fontWeight: "bold",
                                                                     border: "none",
@@ -284,7 +284,7 @@ const BlogPostTable = () => {
                                                         key={column.id}
                                                         align={column.align}
                                                         style={{
-                                                            maxWidth: column.maxWidth,
+                                                            inlineSize: column.inlineSize,
                                                             color: "#1976d2",
                                                             fontWeight: "bold",
                                                         }}

@@ -56,8 +56,8 @@ export const AuthProvider = ({ children }) => {
         style={{
           display: "flex",
           justifyContent: "center",
-          height: "100vh",
-          width: "100%",
+          blockSize: "100vh",
+          inlineSize: "100%",
           alignItems: "center",
         }}
       >

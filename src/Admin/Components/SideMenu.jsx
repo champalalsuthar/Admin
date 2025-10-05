@@ -147,7 +147,7 @@ const SideMenu = () => {
           >
             <IconButton
               onClick={toggleSidebarVisibility}
-              style={{ marginLeft: 10 }}
+              style={{ insetInlineStart: 10 }}
             >
               <MdMenu style={{ fontSize: 25 }} />
             </IconButton>

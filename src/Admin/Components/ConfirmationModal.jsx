@@ -17,10 +17,10 @@ const ConfirmationModal = ({ open, onClose, onConfirm, editData }) => {
           <Box
             sx={{
               position: "absolute",
-              top: "50%",
-              left: "50%",
+              insetBlockStart: "50%",
+              insetInlineStart: "50%",
               transform: "translate(-50%, -50%)",
-              width: 400,
+              inlineSize: 400,
               bgcolor: "background.paper",
               boxShadow: 3,
               p: 8,

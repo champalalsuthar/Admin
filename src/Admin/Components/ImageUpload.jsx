@@ -12,15 +12,15 @@ const InputStyled = styled("input")({
 });
 
 const ImagePreview = styled("img")(() => ({
-  width: "100%",
-  height: "100%",
+  inlineSize: "100%",
+  blockSize: "100%",
   objectFit: "cover",
   borderRadius: "8px",
 }));
 
 const UploadContainer = styled(Box)(({ width, height, dragOver }) => ({
-  width: width || "300px",
-  height: height || "300px",
+  inlineSize: width || "300px",
+  blockSize: height || "300px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -44,8 +44,8 @@ const UploadContainer = styled(Box)(({ width, height, dragOver }) => ({
 
 const RemoveButton = styled(IconButton)({
   position: "absolute",
-  top: "0px",
-  right: "0px",
+  insetBlockStart: "0px",
+  insetInlineEnd: "0px",
 });
 
 const AddButton = styled(Button)({

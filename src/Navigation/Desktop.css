@@ -6,14 +6,14 @@
   padding: 5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   position: fixed;
-  top: 0;
-  width: 100%;
+  inset-block-start: 0;
+  inline-size: 100%;
   z-index: 1000;
   background: white;
 }
 
 nav .logo {
-  width: 100px;
+  inline-size: 100px;
   font-weight: 800;
   font-size: 25px;
 
@@ -49,14 +49,14 @@ nav ul li a {
 nav ul .nav-links:after {
   content: "";
   display: block;
-  height: 3px;
-  width: 0;
+  block-size: 3px;
+  inline-size: 0;
   background: transparent;
   transition: width 0.7s ease, background-color 0.5s ease;
 }
 
 nav ul .nav-links:hover:after {
-  width: 100%;
+  inline-size: 100%;
   background: #1976d2;
 }
 
@@ -67,15 +67,15 @@ nav ul .nav-links:hover:after {
 
 
 .sidebar {
-  width: 250px;
+  inline-size: 250px;
   background-color: white;
   padding: 20px 0px 20px 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: fixed;
-  top: 70px;
-  bottom: 0;
+  inset-block-start: 70px;
+  inset-block-end: 0;
   display: none;
-  left: 0;
+  inset-inline-start: 0;
   z-index: 2;
   font-size: 20;
 }
@@ -88,13 +88,13 @@ nav ul .nav-links:hover:after {
 
 .sidebar h2 {
   font-size: 18px;
-  margin-bottom: 15px;
+  margin-block-end: 15px;
 }
 
 .sidebar ul {
   list-style-type: none;
   overflow-x: hidden;
-  height: 100%;
+  block-size: 100%;
   scrollbar-width: thin;
 }
 
@@ -113,14 +113,14 @@ nav ul .nav-links:hover:after {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
-  border-bottom: 1px solid rgb(189, 189, 189);
+  inline-size: 90%;
+  border-block-end: 1px solid rgb(189, 189, 189);
 }
 
 .dropdown-content {
   display: none;
-  width: 90%;
-  padding-left: 10px;
+  inline-size: 90%;
+  padding-inline-start: 10px;
   z-index: 1;
   overflow-y: auto;
 }
@@ -140,8 +140,8 @@ nav ul .nav-links:hover:after {
 }
 
 .sub-dropdown-content {
-  width: 100%;
-  padding-left: 10px;
+  inline-size: 100%;
+  padding-inline-start: 10px;
 }
 
 #subdropbtn {
@@ -152,9 +152,9 @@ nav ul .nav-links:hover:after {
 }
 
 .sub-dropdown-item {
-  border-bottom: 1px solid rgb(189, 189, 189);
-  margin-bottom: 0px;
-  padding-left: 10px;
+  border-block-end: 1px solid rgb(189, 189, 189);
+  margin-block-end: 0px;
+  padding-inline-start: 10px;
 
 }
 
