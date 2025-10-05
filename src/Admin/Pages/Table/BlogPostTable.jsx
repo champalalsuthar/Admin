@@ -55,6 +55,12 @@ const BlogPostTable = () => {
             align: "center",
         },
         {
+            id: "createdAt",
+            label: "Created At",
+            inlineSize: 150,
+            align: "center",
+        },
+        {
             id: "status",
             label: "Status",
             inlineSize: 100,
@@ -332,8 +338,33 @@ const BlogPostTable = () => {
                                                 <TableRow key={post._id}>
                                                     <TableCell align="center">{post.title}</TableCell>
 
-                                                    <TableCell align="center">{post.tags.join(", ")}</TableCell>
-                                                    <TableCell align="center">{post.categories.join(", ")}</TableCell>
+                                                    <TableCell align="center">
+                                                        {post?.tags?.length === 0
+                                                            ? "N/A"
+                                                            : post?.tags?.length <= 2
+                                                                ? post?.tags?.join(", ")
+                                                                : `${post?.tags?.slice(0, 2)?.join(", ")}...`}
+                                                    </TableCell>
+
+                                                    <TableCell align="center">
+                                                        {post?.categories?.length === 0
+                                                            ? "N/A"
+                                                            : post?.categories?.length <= 2
+                                                                ? post?.categories?.join(", ")
+                                                                : `${post?.categories?.slice(0, 2)?.join(", ")}...`}
+                                                    </TableCell>
+
+                                                    <TableCell align="center">
+                                                        {new Date(post.createdAt).toLocaleDateString("en-IN", {
+                                                            day: "2-digit",
+                                                            month: "short",
+                                                            year: "numeric",
+                                                            hour: "2-digit",
+                                                            minute: "2-digit",
+                                                            hour12: true,
+                                                            timeZone: "Asia/Kolkata"
+                                                        })}
+                                                    </TableCell>
                                                     <TableCell align="center">
                                                         <Button
                                                             variant="contained"
