@@ -23,6 +23,7 @@ import ConfirmationModal from "../../Components/ConfirmationModal";
 import SideMenu from "../../Components/SideMenu";
 import { getallBlogPost } from "../../../API/blogPost/getallBlogPost";
 import { editBlogPost } from "../../../API/blogPost/editBlogPost";
+import { useAuth } from "../../../Context/AuthContext";
 
 const BlogPostTable = () => {
     const [filteredData, setFilteredData] = useState([]);
@@ -32,6 +33,7 @@ const BlogPostTable = () => {
     const [editData, setEditData] = useState({});
     const [postData, setPostData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const { logout } = useAuth();
 
     const columns = [
         {
@@ -98,6 +100,13 @@ const BlogPostTable = () => {
             setLoading(false);
         } catch (error) {
             console.error("Error fetching post data:", error);
+            if (error.message == "Internal server error invalid token") {
+                logout();
+                // toast.error("Invalid Token Please Login Again", {
+                //     autoClose: 500,
+                //     theme: "colored",
+                // });
+            }
             setLoading(false);
         }
     };

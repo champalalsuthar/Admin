@@ -23,6 +23,7 @@ import ConfirmationModal from "../../Components/ConfirmationModal";
 import SideMenu from "../../Components/SideMenu";
 import { getallAdmin } from "../../../API/admin/getallAdmin";
 import { editAdmin } from "../../../API/admin/editAdmin";
+import { useAuth } from "../../../Context/AuthContext";
 
 const AdminTable = () => {
     const [filteredData, setFilteredData] = useState([]);
@@ -32,6 +33,7 @@ const AdminTable = () => {
     const [editData, setEditData] = useState({});
     const [adminData, setAdminData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const { logout } = useAuth();
 
     const columns = [
         {
@@ -93,6 +95,13 @@ const AdminTable = () => {
             setLoading(false);
         } catch (error) {
             console.error("Error fetching Admin data:", error);
+            if (error.message == "Internal server error invalid token") {
+                logout();
+                // toast.error("Invalid Token Please Login Again", {
+                //     autoClose: 500,
+                //     theme: "colored",
+                // });
+            }
         } finally {
             setLoading(false);
         }

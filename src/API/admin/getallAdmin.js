@@ -3,12 +3,18 @@ import SITE_CONFIG from "../../Controller/SiteController";
 
 export const getallAdmin = async () => {
   const AuthToken = localStorage.getItem("AuthToken");
-  const response = await axios.get(`${SITE_CONFIG.apiIPMongo}/admin/user/getalladmin`, {
-    headers: {
-      Authorization: `Bearer ${SITE_CONFIG.apiToken}`,
-      AuthToken: AuthToken,
-    },
-  });
-
-  return response.data;
+  try {
+    const response = await axios.get(`${SITE_CONFIG.apiIPMongo}/admin/user/getalladmin`, {
+      headers: {
+        Authorization: `Bearer ${SITE_CONFIG.apiToken}`,
+        AuthToken: AuthToken
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error to get admin Data:", error);
+    throw new Error(error.response.data.message || "An error occurred");
+  }
 };
+
+
