@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }) => {
       if (adminUser && authToken) {
         try {
           const response = await verifyToken(authToken, adminUser);
-          console.log("Token verification response:", response);
           setIsAuthenticated(true);
           setuserData(response.data);
           setRole(response.data.type);

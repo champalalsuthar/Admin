@@ -8,6 +8,7 @@ import {
     MenuItem,
     InputAdornment,
     Stack,
+    CircularProgress,
 } from "@mui/material";
 import { toast } from "react-toastify";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
@@ -19,7 +20,11 @@ import { fetchAdminById } from "../../../API/admin/fetchAdminById";
 
 const AddEditAdmins = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
     const { id } = useParams();
+    const navigate = useNavigate();
+
     const [adminData, setAdminData] = useState({
         Username: "",
         email: "",
@@ -33,10 +38,13 @@ const AddEditAdmins = () => {
         if (id) {
             const fetchAdminData = async () => {
                 try {
+                    setLoading(true);
                     const data = await fetchAdminById(id);
                     setAdminData(data?.data);
                 } catch (error) {
                     console.error("Error fetching admin data:", error);
+                } finally {
+                    setLoading(false);
                 }
             };
             fetchAdminData();
@@ -111,8 +119,15 @@ const AddEditAdmins = () => {
         return isValid;
     };
 
-    const [errors, setErrors] = useState({});
-    const navigate = useNavigate();
+
+    if (loading) {
+        return (
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", blockSize: "100vh" }}>
+                <CircularProgress />
+            </Box>
+        );
+    }
+
 
     return (
         <>

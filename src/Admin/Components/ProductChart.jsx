@@ -6,7 +6,6 @@ import { FaBlog } from "react-icons/fa";
 
 const ProductChart = ({ Admin, BlogPosts }) => {
   const isSmallScreen = useMediaQuery("(max-width:600px)");
-  console.log("isSmallScreen", isSmallScreen);
 
   return (
     <>

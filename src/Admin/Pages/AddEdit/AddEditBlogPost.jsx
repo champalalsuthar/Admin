@@ -10,6 +10,7 @@ import {
     DialogTitle,
     DialogContent,
     DialogActions,
+    CircularProgress,
 } from "@mui/material";
 import { toast } from "react-toastify";
 import ReactQuill from 'react-quill';
@@ -40,21 +41,26 @@ const AddEditBlogPost = () => {
 
 
     const [errors, setErrors] = useState({});
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (id) {
             const fetchPostData = async () => {
                 try {
+                    setLoading(true);
                     const data = await fetchBlogPostById(id);
                     setPostData(data?.data);
                 } catch (error) {
                     console.error("Error fetching post data:", error);
                     toast.error("Failed to fetch post data");
+                } finally {
+                    setLoading(false);
                 }
             };
             fetchPostData();
         }
     }, [id]);
+
     const handleOnChange = (e) => {
         const { name, value } = e.target;
 
@@ -146,6 +152,13 @@ const AddEditBlogPost = () => {
         setPostData({ ...postData, [name]: value });
         setErrors({ ...errors, [name]: "" });
     };
+    if (loading) {
+        return (
+            <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", blockSize: "100vh" }}>
+                <CircularProgress />
+            </Box>
+        );
+    }
 
     return (
         <>
